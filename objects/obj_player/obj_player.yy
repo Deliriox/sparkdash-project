@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_player",
-    "path":"sprites/spr_player/spr_player.yy",
+    "name":"spr_Cuali_beta_Idle",
+    "path":"sprites/spr_Cuali_beta_Idle/spr_Cuali_beta_Idle.yy",
   },
   "spriteMaskId":null,
   "visible":true,

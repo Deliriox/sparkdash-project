@@ -42,6 +42,7 @@
     {"id":{"name":"spr_wall","path":"sprites/spr_wall/spr_wall.yy",},},
     {"id":{"name":"Sprite1","path":"sprites/Sprite1/Sprite1.yy",},},
     {"id":{"name":"Sprite2","path":"sprites/Sprite2/Sprite2.yy",},},
+    {"id":{"name":"spr_Cuali_beta_Idle","path":"sprites/spr_Cuali_beta_Idle/spr_Cuali_beta_Idle.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
