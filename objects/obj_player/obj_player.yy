@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_Cuali_beta_Idle",
-    "path":"sprites/spr_Cuali_beta_Idle/spr_Cuali_beta_Idle.yy",
+    "name":"Cuali_sparkdash_idle",
+    "path":"sprites/Cuali_sparkdash_idle/Cuali_sparkdash_idle.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -18,10 +18,11 @@
   ],
   "ResourceOrderSettings":[
     {"name":"obj_wall","order":1,"path":"objects/obj_wall/obj_wall.yy",},
+    {"name":"Cuali_sparkdash_idle","order":4,"path":"sprites/Cuali_sparkdash_idle/Cuali_sparkdash_idle.yy",},
+    {"name":"spr_Cuali_beta_Idle","order":3,"path":"sprites/spr_Cuali_beta_Idle/spr_Cuali_beta_Idle.yy",},
     {"name":"spr_wall_corner","order":2,"path":"sprites/spr_wall_corner/spr_wall_corner.yy",},
     {"name":"spr_wall","order":1,"path":"sprites/spr_wall/spr_wall.yy",},
     {"name":"Sprite1","order":16,"path":"sprites/Sprite1/Sprite1.yy",},
     {"name":"Sprite2","order":17,"path":"sprites/Sprite2/Sprite2.yy",},
-    {"name":"spr_Cuali_beta_Idle","order":3,"path":"sprites/spr_Cuali_beta_Idle/spr_Cuali_beta_Idle.yy",},
   ],
 }
