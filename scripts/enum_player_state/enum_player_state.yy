@@ -1,9 +1,9 @@
 {
   "$GMScript":"",
-  "%Name":"Script1",
+  "%Name":"enum_player_state",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"Script1",
+  "name":"enum_player_state",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

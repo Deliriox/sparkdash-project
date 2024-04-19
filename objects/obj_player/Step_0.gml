@@ -25,6 +25,7 @@ if(_jump_key_press && jump_count < jump_max)
 {
 	jump_count++;
 	jump_timer = jump_hold_frames;
+	speed_y = jump_speed;
 	//switch(player_speed){
 	//case 20:
 	//move_y = -4;
@@ -42,15 +43,15 @@ if(_jump_key_press && jump_count < jump_max)
 	//move_y = -1;
 	//break;
 	//}
-	if(move_y > -5){
-	if(player_speed > 0){
-		move_y = (jump_speed * (player_speed/2)) * general_gravity;
-	}
-	else{
-		move_y += jump_speed;
-	}
-	}
-	show_debug_message("Jump:" + string(move_y) + "::" + string(jump_speed) + " and " + string(player_speed));
+	//if(speed_y > -5){
+	//if(player_speed > 0){
+	//	speed_y = (jump_speed * (player_speed/2)) * general_gravity;
+	//}
+	//else{
+	//	speed_y += jump_speed;
+	//}
+	//}
+	//show_debug_message("Jump:" + string(speed_y) + "::" + string(jump_speed) + " and " + string(player_speed));
 }
 
 //stop jump if button is not being held
@@ -71,53 +72,109 @@ if(jump_timer > 0)
 // *** collisions ***
 #region
 //axis X
-if(place_meeting(x + move_x, y, obj_wall))
+if(place_meeting(x + speed_x, y, obj_wall))
 {
-	var _pixel_check = sign(move_x);
+	var _pixel_check = sign(speed_x);
 	while !place_meeting(x + _pixel_check, y, obj_wall)
 	{
 		x+= _pixel_check;
 	}
-	move_x = 0;
+	speed_x = 0;
 }
 //axis Y
-if(place_meeting(x + move_x, y + move_y, obj_wall))
+if(place_meeting(x + speed_x, y + speed_y, obj_wall))
 {
-	var _pixel_check = sign(move_y);
-	while !place_meeting(x + move_x, y + _pixel_check, obj_wall)
+	var _pixel_check = sign(speed_y);
+	while !place_meeting(x + speed_x, y + _pixel_check, obj_wall)
 	{
 		y+= _pixel_check
 	}
-	move_y = 0;
+	speed_y = 0;
 }
 
-x += move_x;
-y += move_y
+x += speed_x;
+y += speed_y
+#endregion
+
+// *** velocity control ***
+#region
+if((_right_key || _left_key) && player_speed < max_speed)
+{
+	if(velocity_timer <= velocity_march_time_1)
+	{
+		velocity_timer++;
+	}
+	else if(velocity_timer <= velocity_march_time_2)
+	{
+		velocity_timer++;
+	}
+	else if(velocity_timer <= velocity_march_time_3)
+	{
+		velocity_timer++;
+	}
+	
+
+}
+
+	if(velocity_timer >= velocity_march_time_1 && velocity_timer < velocity_march_time_2)
+	{
+		player_speed = VELOCITY_PLAYER.VELOCITY_2;
+		//velocity_timer = 0;
+	}
+	if(velocity_timer >= velocity_march_time_2 && velocity_timer < velocity_march_time_3)
+	{
+		player_speed = VELOCITY_PLAYER.VELOCITY_3;
+		//velocity_timer = 0;
+	}
+	
+	if(velocity_timer >= velocity_march_time_3)
+	{
+		player_speed = VELOCITY_PLAYER.VELOCITY_4;
+		//velocity_timer = 0;
+	}
+
+if(keyboard_check(vk_nokey))
+{
+	//if(player_speed > 0)
+	//{
+	//	player_speed -= 0.5;		
+	//}
+	if(velocity_timer > 0)
+		velocity_timer--;
+}
+//if(player_speed < max_speed)
+//{
+	//if(_right_key)
+	//{
+	//	if(!sign(speed_x) && player_speed > 1)
+	//	{
+	//		//for(var _counter = 0; _counter <3; _counter+=1){
+	//			player_speed -= 1;
+	//		//}
+	//	}
+	//}	
+//}
 #endregion
 
 
 
+//if(keyboard_check(vk_nokey) && player_speed > 0)
+//{
+//	player_speed -= 0.5;
+//}
+//else if(keyboard_check(vk_nokey) && player_speed < 0)
+//{
+//	player_speed = 0;
+//}
 
-if(keyboard_check(vk_nokey) && player_speed > 0)
-{
-	player_speed -= 0.5;
-}
-else if(keyboard_check(vk_nokey) && player_speed < 0)
-{
-	player_speed = 0;
-}
 
 
-if((_right_key || _left_key) && player_speed < max_speed)
-{
-	player_speed += 0.05;
-}
 
-move_and_collide(move_x, move_y , obj_wall, 4, 0, 0, player_speed, player_speed);
+move_and_collide(speed_x, speed_y , obj_wall, 4, 0, 0, player_speed, player_speed);
 
 // *** gravity ***
-move_x = (_right_key - _left_key) * player_speed;
-move_y += general_gravity;
+speed_x = (_right_key - _left_key) * player_speed;
+speed_y += general_gravity;
 
 
 // *** Player states ***
@@ -126,6 +183,22 @@ state = STATE_PLAYER.IDLE;
 
 if(player_speed == max_speed)
 state = STATE_PLAYER.FULL_SPEED;
+
+//switch(velocity)
+//{
+//	case 1:
+//	max_speed = STATE_PLAYER.IDLE;
+//	break;
+	
+//	case STATE_PLAYER.CHARGING:
+//	state = STATE_PLAYER.CHARGING;
+//	break;
+	
+//	case STATE_PLAYER.FULL_SPEED:
+//	state = STATE_PLAYER.FULL_SPEED;
+//	break
+	
+//}
 
 //switch(state)
 //{
