@@ -98,7 +98,7 @@ y += speed_y
 
 // *** velocity control ***
 #region
-if((_right_key || _left_key) && player_speed < max_speed)
+if((_right_key || _left_key) && player_speed <= max_speed)
 {
 	if(velocity_timer <= velocity_march_time_1)
 	{
@@ -112,36 +112,57 @@ if((_right_key || _left_key) && player_speed < max_speed)
 	{
 		velocity_timer++;
 	}
-	
+	else if(velocity_timer <= velocity_march_time_4)
+	{
+		velocity_timer++;
+	}
 
 }
-
-	if(velocity_timer >= velocity_march_time_1 && velocity_timer < velocity_march_time_2)
-	{
-		player_speed = VELOCITY_PLAYER.VELOCITY_2;
-		//velocity_timer = 0;
-	}
-	if(velocity_timer >= velocity_march_time_2 && velocity_timer < velocity_march_time_3)
-	{
-		player_speed = VELOCITY_PLAYER.VELOCITY_3;
-		//velocity_timer = 0;
-	}
-	
-	if(velocity_timer >= velocity_march_time_3)
-	{
-		player_speed = VELOCITY_PLAYER.VELOCITY_4;
-		//velocity_timer = 0;
-	}
-
-if(keyboard_check(vk_nokey))
+//decelerate
+else if(keyboard_check(vk_nokey))
 {
-	//if(player_speed > 0)
-	//{
-	//	player_speed -= 0.5;		
-	//}
 	if(velocity_timer > 0)
 		velocity_timer--;
 }
+	
+if(velocity_timer <= velocity_march_time_1)
+{
+	player_speed = MARCH_PLAYER.MARCH_1;
+}
+if(velocity_timer >= velocity_march_time_1 && velocity_timer < velocity_march_time_2)
+{
+	player_speed = MARCH_PLAYER.MARCH_2;
+}
+if(velocity_timer >= velocity_march_time_2 && velocity_timer < velocity_march_time_3)
+{
+	player_speed = MARCH_PLAYER.MARCH_3;
+}	
+if(velocity_timer >= velocity_march_time_3 && velocity_timer < velocity_march_time_4)
+{
+	player_speed = MARCH_PLAYER.MARCH_4;
+}
+
+
+
+if(_right_key)
+{
+	if(!sign(speed_x) && player_speed > 1)
+	{
+		//for(var _counter = 0; _counter <3; _counter+=1){
+			player_speed -= 2;
+		//}
+	}
+}
+if(_left_key)
+{
+	if(sign(speed_x) && player_speed > 1)
+	{
+		//for(var _counter = 0; _counter <3; _counter+=1){
+			player_speed += 2;
+		//}
+	}
+}
+
 //if(player_speed < max_speed)
 //{
 	//if(_right_key)

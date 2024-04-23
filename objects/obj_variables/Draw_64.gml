@@ -8,4 +8,4 @@ draw_text(x,y - 65, "move x: " + string(obj_player.speed_x));
 draw_text(x,y - 85, "player state: " + string(obj_player.state));
 draw_text(x,y - 105, "velocity timer: " + string(obj_player.velocity_timer));
 //draw_text(x,y - 115, "velocity march: " + string(obj_player.velocity_march_time));
-draw_text(x,y - 125, "velocity: " + string(obj_player.velocity));
+//draw_text(x,y - 125, "velocity: " + string(obj_player.velocity));
