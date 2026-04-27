@@ -25,16 +25,14 @@ if(obj_player_spark.player_force >= block_force) {
 		// Deactivate it by changing its sprite to the inactive block sprite
 		sprite_index = spr_block_coins_inactive;
 	}
-	
+
+	// Add the block's coins value to the player's coins variable
+	// (This variable is created in the Variable Definitions)
+	//obj_player.coins += coins;
+
+	// Create the block 'hit animation' instance above the block; see the sprite "spr_block_coins_hit_animation"
+	// On the X axis, it's created at the center of the instance, by adding half its width to the X (which is on the left)
+	// The Y is 90 pixels below the top border
+	instance_create_layer(x + sprite_width / 2, y + 90, layer, obj_block_coins_hit_animtion);
 	instance_destroy();
 }
-
-// Add the block's coins value to the player's coins variable
-// (This variable is created in the Variable Definitions)
-//obj_player.coins += coins;
-
-// Create the block 'hit animation' instance above the block; see the sprite "spr_block_coins_hit_animation"
-// On the X axis, it's created at the center of the instance, by adding half its width to the X (which is on the left)
-// The Y is 90 pixels below the top border
-
-//instance_create_layer(x + sprite_width / 2, y + 90, layer, obj_block_coins_hit_animtion);

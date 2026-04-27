@@ -5,9 +5,15 @@ enum Player_State {
 	Skidding = 3
 }
 enum Player_Speed {
-	March_1 = 6,
-	March_2 = 10,
+	March_1 = 8,
+	March_2 = 14,
 	March_3 = 20
+}
+
+enum Force {
+	Force_1 = 1,
+	Force_2 = 2,
+	Force_3 = 3
 }
 
 function PlayerLeft()

@@ -7,3 +7,5 @@ target_y = y;
 // We're doing this so the instance doesn't actually move and its mask stays in the same place
 // A moving mask was found to cause collision issues
 fake_y = y;
+
+block_force = Force.Force_1;

@@ -1,12 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"obj_block_coins",
+  "%Name":"obj_block_force_3",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":10,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_block_coins",
+  "name":"obj_block_force_3",
   "overriddenProperties":[],
   "parent":{
     "name":"Blocks",
@@ -37,8 +37,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_block_coins_active",
-    "path":"sprites/spr_block_coins_active/spr_block_coins_active.yy",
+    "name":"spr_block_coins_inactive",
+    "path":"sprites/spr_block_coins_inactive/spr_block_coins_inactive.yy",
   },
   "spriteMaskId":null,
   "visible":true,

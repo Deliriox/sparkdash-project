@@ -13,7 +13,10 @@ draw_text(obj_player_spark.x + 70, obj_player_spark.y - 55,
 "March " + string(obj_player_spark.player_current_march));
 
 draw_text(obj_player_spark.x + 70, obj_player_spark.y - 90, 
-"Speed " + string(obj_player_spark.player_speed));
+"Player_Speed " + string(obj_player_spark.player_speed));
 
 draw_text(obj_player_spark.x - 70, obj_player_spark.y - 90, 
 "Skidding " + string(obj_player_spark.is_skidding));
+
+draw_text(obj_player_spark.x - 75, obj_player_spark.y - 125, 
+"Force " + string(obj_player_spark.player_force));

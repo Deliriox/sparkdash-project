@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BlockController",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BlockController",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
