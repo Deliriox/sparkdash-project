@@ -34,5 +34,6 @@ if(obj_player_spark.player_force >= block_force) {
 	// On the X axis, it's created at the center of the instance, by adding half its width to the X (which is on the left)
 	// The Y is 90 pixels below the top border
 	instance_create_layer(x + sprite_width / 2, y + 90, layer, obj_block_coins_hit_animtion);
+	
 	instance_destroy();
 }

@@ -20,3 +20,6 @@ draw_text(obj_player_spark.x - 70, obj_player_spark.y - 90,
 
 draw_text(obj_player_spark.x - 75, obj_player_spark.y - 125, 
 "Force " + string(obj_player_spark.player_force));
+
+draw_text(obj_player_spark.x + 75, obj_player_spark.y - 125, 
+"Is Charged " + string(obj_player_spark.is_spark_charged));

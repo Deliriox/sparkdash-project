@@ -10,5 +10,9 @@ defeated_object = obj_player_defeated;
 left_input = false;
 right_input = false;
 jump_input = false;
+down_input = false;
+
+trail_timer = 0;
+trail_delay = 10;
 
 

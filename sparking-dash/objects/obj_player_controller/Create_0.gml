@@ -12,6 +12,7 @@ temporal_terrain_friction = terrain_friction;
 grounded = false;								// If player is on the ground.
 grounded_x = x;
 grounded_y = y;
+colliding = false;
 
 change_march_delay = 60;						// 1 frame of delay between speed change.
 march_delay_counter = change_march_delay;
@@ -20,3 +21,13 @@ skid_timer = 30;
 skid_counter = skid_timer;
 
 player_state = Player_State.Iddle;				// Player's states; Iddle, Move, Jump & Skidding.
+
+sparking_dir = 0;								// Player's direction while sparking state.
+
+is_spark_charged = false;						// Indicates if player is charging spark.
+sparking_holding = 180;							// How much sparking charge last.
+sparking_holding_loss = sparking_holding;		// Counter.
+hold_to_chargin = 30;							// Time player needs to charge sparking.
+hold_to_chargin_count = hold_to_chargin;					// Counter.
+//sparking_in_air = 180;
+//sparking_in_air_count = sparking_in_air;
