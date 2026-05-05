@@ -5,11 +5,17 @@ if(round(vel_x) != 0) {
 	
 	if(!grounded)
 		friction_applied = friction_applied / 4;					// No friction in air.
-	
-	vel_x -= friction_applied;										// Frinction on ground.
+		
+	if (abs(vel_x) <= friction_applied) {
+        vel_x = 0;
+    } 
+    else {	
+		vel_x -= friction_applied;									// Frinction on ground.
+	}
 }
 else
 	vel_x = 0;
+	
 if(!grounded && player_state != Player_State.Sparking)				// Apply gravity when player is not in sparking state.
 	vel_y += gravity_force;
 	

@@ -1,47 +1,60 @@
-var _h_input = keyboard_check(ord("D")) - keyboard_check(ord("A"));
-var _v_input = keyboard_check(ord("S")) - keyboard_check(ord("W"));
+var h_input = right_input - left_input;
+var v_input = down_input - up_input;
+
+PlayerStateChange();
 
 if (player_state != Player_State.Sparking) {
-	if(player_state == Player_State.Move) {
+	if(h_input != 0 && !is_skidding) {
+		if(temporal_terrain_friction != terrain_friction)
+			temporal_terrain_friction = terrain_friction;
 		PlayerAcceleration();
 	}
-	else if(player_state == Player_State.Iddle || !grounded) {
-		if(player_speed > player_base_speed)
+	else {
+		if(player_speed > player_base_speed) {
 			PlayerDeceleration();
+				
+		}
 	}
 }
 
 #region Sparking.
-if (is_spark_charged && player_state != Player_State.Sparking) {	// Time that sparking is hold without use.
-    obj_player_spark.image_blend = c_red;    
+if (is_spark_charged && player_state != Player_State.Sparking) {	// Time that sparking is hold without use.   
     
     if (sparking_holding_loss <= 0) {
         sparking_holding_loss = sparking_holding;
         is_spark_charged = false;
-        obj_player_spark.image_blend = c_white;
     }
 	else if(!down_input)
 		sparking_holding_loss--;
 }
 
-if(is_spark_charged && !grounded)			// Activate sparking.  
+if(is_spark_charged && !grounded)							// Activate sparking.  
 {
-	if(_h_input != 0 || _v_input != 0)		// If there is an input then procced to sparking.
-	{
-		if(jump_input && player_state != Player_State.Sparking) // If jump then activate sparking.
-		{
-			show_debug_message("KEYS: " + string(_h_input) + " | DIR: " + string(sparking_dir) + " | VEL: " + string(vel_x));
-			obj_player_spark.image_blend = c_green;
+	if(jump_input && player_state != Player_State.Sparking) // If jump then activate sparking.
+	{			
+		player_state = Player_State.Sparking;
 			
-			player_state = Player_State.Sparking;
-			sparking_dir = point_direction(0, 0, _h_input, _v_input);
-			player_current_march = Player_Speed.March_3;
-			player_speed = player_current_march;
-			player_force = Force.Force_3;
-			
-			is_spark_charged = false;
-            sparking_holding_loss = sparking_holding;
+		if(h_input != 0 || v_input != 0)
+			sparking_dir = point_direction(0, 0, h_input, v_input);
+		else {
+	        if (obj_player_spark.image_xscale == 1) {
+	            sparking_dir = 0;							// Dash Right
+	        } else {
+	            sparking_dir = 180;							// Dash Left
+	        }
 		}
+		// Sparking variables.
+		player_current_march = Player_Speed.March_3;
+		player_speed = player_current_march;
+		player_force = Force.Force_3;
+			
+		is_spark_charged = false;
+        sparking_holding_loss = sparking_holding;
+		// Move immediately after sparking is activaed.
+		vel_x = lengthdir_x(player_speed, sparking_dir);
+		vel_y = lengthdir_y(player_speed, sparking_dir);
+			
+		show_debug_message("KEYS: " + string(h_input) + " | DIR: " + string(sparking_dir) + " | VEL: " + string(vel_x));
 	}
 }
 
@@ -49,7 +62,7 @@ if(player_state == Player_State.Sparking)
 {        
 	vel_x = lengthdir_x(player_speed, sparking_dir);
 	vel_y = lengthdir_y(player_speed, sparking_dir);
-	show_debug_message("KEYS: " + string(_h_input) + " | DIR: " + string(sparking_dir) + " | VEL: " + string(vel_x));			
+	show_debug_message("KEYS: " + string(h_input) + " | DIR: " + string(sparking_dir) + " | VEL: " + string(vel_x));			
 }
 #endregion
 
@@ -98,7 +111,3 @@ repeat (move_count)
 	}	
 }
 #endregion
-
-
-
-

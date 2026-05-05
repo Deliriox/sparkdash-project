@@ -1,7 +1,4 @@
 event_inherited();
-
-
-
 if (left_input)
 {
 	PlayerLeft();
@@ -15,6 +12,10 @@ if (right_input)
 if (jump_input)
 {	
 	PlayerJump();		
+}
+
+if (up_input) {
+    PlayerUp();
 }
 
 if (down_input)
